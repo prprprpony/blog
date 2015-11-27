@@ -6,12 +6,12 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: 0mu & dd-han 的發廚筆記
-email: m85091081@gmail.com
+title: pr3-pony's magical wonderland
+email: 3254tg89@gmail.com
 description: 反正就只是個廚站 # this means to ignore newlines until "baseurl:"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://reimu.dd-han.tw" # the base hostname & protocol for your site
-github_username:  orgs/0mu-Project
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "http://prprprpony.github.io" # the base hostname & protocol for your site
+github_username:  users/prprprpony
 gems: [jekyll-paginate]
 paginate: 5
 paginate_path: "/page:num/"
