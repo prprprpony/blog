@@ -8,11 +8,12 @@
 # Site settings
 title: pr3-pony's magical wonderland
 email: 3254tg89@gmail.com
-description: 反正就只是個廚站 # this means to ignore newlines until "baseurl:"
+description: 廢文集中營 # this means to ignore newlines until "baseurl:"
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://prprprpony.github.io" # the base hostname & protocol for your site
 github_username:  users/prprprpony
 gems: [jekyll-paginate]
+disqus_short_name: pr3pony-blog
 paginate: 5
 paginate_path: "/page:num/"
 # Build settings
