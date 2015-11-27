@@ -4,7 +4,7 @@ title:  "Disqus 有點麻煩"
 date:   2015-11-27 19:11:33 +0800
 categories: disqus
 ---
-調了好久，囧
-改別人的 example 都出錯
-最後是照官方網站的教學弄才弄好
-果然遇到問題都要先找 official reference 呀
+調了好久，囧  
+改別人的 example 都出錯  
+最後是照官方網站的教學弄才弄好  
+果然遇到問題都要先找 official reference 呀  
