@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "uva 1209 Wordfish"
-date:   2015-11-27 17:31:47 +0800
+date:   2015-12-16 19:01:33 +0800
 categories: oj, uva
 ---
 [Problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3650)
