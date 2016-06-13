@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "tnfshoj 196 / A. 難忘的回憶"
+date:   2016-06-13 20:58:52 +0800
+categories: oi, oj, tnfshoj, two pointers
+---
+
+* 題目理解：給 N 個數字，第 i 個為 Si，給 Q 個詢問，第 i 個為 Wi，是否存在 Si + Sj == Wi（i <= j）？
+
+* 解法：首先先將 S 照升序排序  
+對於每筆詢問，先特判一定無解的狀況(N < 2 or S[0] * 2 > W or S[N-1] * 2 < W) 跟 i == j 的狀況（此時 W 為偶數，二分搜 W/2 即可）  
+接著尋找 i < j 的狀況  
+維護兩個下標 i, j 
+對於每個 i ，尋找最大的 j 使得 S[i] + S[j] <= W，  
+對於下一個 i 而言，因為 S[i] + S[j + 1] > W 而且 S[i+1] >= S[i]  
+所以S[i+1] + S[j+1] > W，故 i + 1 對應的 j 可以從當前的 j 開始尋找  
+* [code](https://github.com/prprprpony/oj/blob/master/tnfshoj/ac/196.cpp)
