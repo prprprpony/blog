@@ -4,7 +4,7 @@ title:  "tnfshoj 196 / A. 難忘的回憶"
 date:   2016-06-13 20:58:52 +0800
 categories: oi, oj, tnfshoj, two pointers
 ---
-
+* [problem link](http://toj.tfcis.org/oj/pro/196/)
 * 題目理解：給 N 個數字，第 i 個為 Si (Si >= 0)，給 Q 個詢問，第 i 個為 Wi，問是否存在 Si + Sj == Wi (i <= j)？
 * 解法：首先先將 S 照升序排序  
 對於每筆詢問，先特判一定無解的狀況(S[0] * 2 > W or S[N-1] * 2 < W) 跟 i == j 的狀況(此時 W 為偶數，二分搜 W/2 即可)  
