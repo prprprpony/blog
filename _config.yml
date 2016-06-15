@@ -11,7 +11,7 @@ email: 3254tg89@gmail.com
 description: 廢文集中營 # this means to ignore newlines until "baseurl:"
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://prprprpony.github.io" # the base hostname & protocol for your site
-github_username:  users/prprprpony
+github_username:  prprprpony
 gems: [jekyll-paginate]
 disqus_short_name: pr3pony-blog
 paginate: 5
