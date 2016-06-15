@@ -2,7 +2,7 @@
 layout: post
 title:  "Facebook Hacker Cup 2016 Qualification Round"
 date:   2016-01-11 19:38:02 +0800
-categories: oi, facebookhackercup
+categories: facebookhackercup
 ---
 
 被學長推坑參加  
