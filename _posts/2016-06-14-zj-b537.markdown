@@ -4,51 +4,67 @@ title:  "zj b537 分數運算 - 1"
 date:   2016-06-14 23:39:42 +0800
 categories: oj zj
 ---
-* 發現自己幾乎沒在用這 blog，決定多發一些廢文  
+*    發現自己幾乎沒在用這 blog，決定多發一些廢文  
 今天寫這題還覺得蠻有趣的，特發文以志之  
-* [problem link](http://zerojudge.tw/ShowProblem?problemid=b537)
-* 題目：定義一個函數 f(k)  
-f(1) = 1  
-f(2k + 1) = 1 / f(2k), k 屬於 N  
-f(2k) = 1 + f(k), k 屬於 N  
-現在給兩正整數 a, b，求 k 使得 f(k) = a / b  
-*  解法：  
+*    [problem link](http://zerojudge.tw/ShowProblem?problemid=b537)
+*   題目：
 
-觀察 f(k) 可發現當 k > 1 時，  
-若 k 為偶數，f(k) > 1，  
-若 k 為奇數，0 < f(k) < 1  
+$$
+f(k) =  
+\begin{cases}
+1                   &\text{if $k$ = 1} \\
+\frac 1 {f(k - 1)}  &\text{if $k$ is odd} \\
+1 + f(\frac k 2)    &\text{if $k$ is even} \\
+\end{cases}
+$$
 
-證明如下  
+給定 $$ \left\{ a \in N, b \in N \mid 1 \le a, b \le 60 \right\} $$，求 $$ \{ k \in N \mid f(k) = \frac a b \} $$
 
-當 f(k) > 0 時  
-f(2k) = 1 + f(k) > 0  
-當 f(2k) > 0 時  
-f(2k + 1) = 1 / f(2k) > 0  
-已知 f(1) = 1 > 0  
-故 f(k) 恆正  
+*   解法：  
+    觀察 f(k) 可發現
 
-已知 f(k) 恆正  
-f(2k) = 1 + f(k) > 1  
+        當 k > 1 時，  
+        若 k 為偶數，f(k) > 1，  
+        若 k 為奇數，0 < f(k) < 1  
 
-當 f(2k) > 1 時  
-f(2k+1) = 1 / f(2k) < 1  
+    證明如下：  
 
-因此，對於給定的 f(k) 值，可與 1 比較大小來判斷其為偶數項或奇數項  
-又，由定義移項可得  
-若 k 為奇數  
-f(k) = 1 / f(k-1) -> f(k-1) = 1 / f(k)  
-若 k 為偶數  
-f(k) = 1 + f(k/2) -> f(k/2) = f(k) - 1  
+        當 f(k) > 0 時  
+        f(2k) = 1 + f(k) > 0  
+        當 f(2k) > 0 時  
+        f(2k + 1) = 1 / f(2k) > 0  
+        已知 f(1) = 1 > 0  
+        故 f(k) 恆正  
+        
+        已知 f(k) 恆正  
+        f(2k) = 1 + f(k) > 1  
+        
+        當 f(2k) > 1 時  
+        f(2k+1) = 1 / f(2k) < 1  
 
-則 f 的反函數 af(x) =  
-2 * af(x - 1) if x > 1  
-1 + af(1 / x) if x < 1  
-1 if x = 1  
+    因此，對於給定的 f(k) 值，可與 1 比較大小來判斷其為偶數項或奇數項  
+    又，由定義移項可得  
 
-* 實作時，我一開始用 C++ 寫了個分數 class，寫的落落長  
-[code1](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.cpp)  
-後來仔細思考一下，發覺其實可以化簡  
-[code2](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.c)  
-並且發現，這函數遞迴的方式跟 gcd 差不多嘛！  
-因此，其時間複雜度 =  gcd 的時間複雜度 = O(lg Max(a, b))  
-使其 worst case 的測資為費式數列相鄰的兩項  
+        若 k 為奇數  
+        f(k) = 1 / f(k-1) -> f(k-1) = 1 / f(k)  
+        若 k 為偶數  
+        f(k) = 1 + f(k/2) -> f(k/2) = f(k) - 1  
+
+    由此性質可設計出 f(k) 的反函數 af(x) 
+
+$$
+af(x) =  
+\begin{cases}
+1,             &\text{if $x$ = 1} \\
+2\times af(x - 1), &\text{if $x$ > 1} \\
+1 + af(1 / x), &\text{if $x$ < 1} \\
+\end{cases}
+$$
+
+*   實作時，我一開始用 C++ 寫了個分數 class，寫的落落長  
+    [code1](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.cpp)  
+    後來仔細思考一下，發覺其實可以化簡  
+    [code2](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.c)  
+    並且發現，這函數遞迴的方式跟 gcd 差不多嘛！  
+    因此，其時間複雜度 =  \\(\gcd\\) 的時間複雜度 = \\(O(\log \min(a, b))\\)
+    使其 worst case 的測資為費式數列相鄰的兩項  
