@@ -3,6 +3,7 @@ layout: post
 title:  "tnfshoj 196 / A. 難忘的回憶"
 date:   2016-06-13 20:58:52 +0800
 categories: oj tnfshoj two_pointers
+comments: true
 ---
 * [problem link](http://toj.tfcis.org/oj/pro/196/)
 * 題目理解：給 N (N <= 10^5) 個數字，第 i 個為 Si (0 <= Si <= 10^5)，給 Q (Q <= 10^5) 個詢問，第 i 個為 Wi (0 <= Wi <= 2 \* 10^5)，問是否存在 Si + Sj == Wi (i <= j)？

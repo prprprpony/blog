@@ -3,6 +3,7 @@ layout: post
 title:  "Disqus 有點麻煩"
 date:   2015-11-27 19:11:33 +0800
 categories: disqus
+comments: true
 ---
 調了好久，囧  
 改別人的 example 都出錯  

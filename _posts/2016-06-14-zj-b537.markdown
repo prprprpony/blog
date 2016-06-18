@@ -3,6 +3,7 @@ layout: post
 title:  "zj b537 分數運算 - 1"
 date:   2016-06-14 23:39:42 +0800
 categories: oj zj
+comments: true
 ---
 *    發現自己幾乎沒在用這 blog，決定多發一些廢文  
 今天寫這題還覺得蠻有趣的，特發文以志之  
