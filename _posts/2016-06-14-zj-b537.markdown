@@ -5,62 +5,83 @@ date:   2016-06-14 23:39:42 +0800
 categories: oj zj
 comments: true
 ---
-*    發現自己幾乎沒在用這 blog，決定多發一些廢文  
-今天寫這題還覺得蠻有趣的，特發文以志之  
-*    [problem link](http://zerojudge.tw/ShowProblem?problemid=b537)
-*   題目：
+*   發現自己幾乎沒在用這 blog，決定多發一些廢文  
+    今天寫這題還覺得蠻有趣的，特發文以志之  
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=b537)
+*   題目：  
+    $$
+    k \in N, f(k) =  
+    \begin{cases}
+    1                   &\text{if $k$ = 1} \\
+    \frac 1 {f(k - 1)}  &\text{if $k$ is odd} \\
+    1 + f(\frac k 2)    &\text{if $k$ is even}
+    \end{cases}
+    $$
 
-$$
-f(k) =  
-\begin{cases}
-1                   &\text{if $k$ = 1} \\
-\frac 1 {f(k - 1)}  &\text{if $k$ is odd} \\
-1 + f(\frac k 2)    &\text{if $k$ is even} \\
-\end{cases}
-$$
-
-給定 $$ \left\{ a \in N, b \in N \mid 1 \le a, b \le 60 \right\} $$，求 $$ \{ k \in N \mid f(k) = \frac a b \} $$
+    給定 $$ \{ a \in N, b \in N \mid 1 \le a, b \le 60 \} $$，求 $$ \{ k \in N \mid f(k) = \frac a b \} $$
 
 *   解法：  
-    觀察 f(k) 可發現
+    從前從前有個肥宅跟我說過，解數列問題時，最重要的是觀察  
+    我們先照題目敘述建個表觀察看看吧！  
+    [建表 code](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/buildtable.cpp)，輸出為 LaTeX
 
-        當 k > 1 時，  
-        若 k 為偶數，f(k) > 1，  
-        若 k 為奇數，0 < f(k) < 1  
+    $$
+    \begin{array}{c|c}
+    k & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+    f(k) & 1 & 2 & \frac 1 2 & 3 & \frac 1 3 & \frac 3 2 & \frac 2 3 & 4 & \frac 1 4 & \frac 4 3 \\
+    \end{array}
+    $$
+
+    觀察 \\(f(k)\\) 可發現
+
+    $$
+    k > 1, 
+    \begin{cases}
+    f(k) > 1     &\text{if $k$ is even} \\
+    1 > f(k) > 0 &\text{if $k$ is odd}
+    \end{cases}
+    $$
 
     證明如下：  
 
-        當 f(k) > 0 時  
-        f(2k) = 1 + f(k) > 0  
-        當 f(2k) > 0 時  
-        f(2k + 1) = 1 / f(2k) > 0  
-        已知 f(1) = 1 > 0  
-        故 f(k) 恆正  
-        
-        已知 f(k) 恆正  
-        f(2k) = 1 + f(k) > 1  
-        
-        當 f(2k) > 1 時  
-        f(2k+1) = 1 / f(2k) < 1  
+    $$
+    \begin{array}{l}
+    \text{Proof}                \\
+    \text{1. }f(1) = 1 > 0      \\
+    \text{2. if }f(k) > 0       \\
+    f(2k) = 1 + f(k) > 1        \\
+    0 < \frac 1 {f(2k)} < 1     \\
+    f(2k + 1) = \frac 1 {f(2k)} \\
+    0 < f(2k + 1) < 1           \\
+    \Rightarrow \forall k \in \Bbb{N}, k > 1,\\
+    \begin{cases}
+    f(k) > 1     &\text{if $k$ is even} \\
+    1 > f(k) > 0 &\text{if $k$ is odd}
+    \end{cases}
+    \end{array}
+    $$
 
-    因此，對於給定的 f(k) 值，可與 1 比較大小來判斷其為偶數項或奇數項  
+    因此，對於給定的 \\(f(k)\\) 值，可與 1 比較大小來判斷其為偶數項或奇數項  
+
     又，由定義移項可得  
+        
+    $$
+    \begin{cases}
+    f(k - 1) = 1 / f(k),     &\text{if $k$ is odd}  \\
+    f(\frac k 2) = f(k) - 1  &\text{if $k$ is even} \\
+    \end{cases}
+    $$
 
-        若 k 為奇數  
-        f(k) = 1 / f(k-1) -> f(k-1) = 1 / f(k)  
-        若 k 為偶數  
-        f(k) = 1 + f(k/2) -> f(k/2) = f(k) - 1  
+    由上述兩個性質可設計出 \\(f(k)\\) 的反函數 \\(f^{-1}(x) \\)
 
-    由此性質可設計出 f(k) 的反函數 af(x) 
-
-$$
-af(x) =  
-\begin{cases}
-1,             &\text{if $x$ = 1} \\
-2\times af(x - 1), &\text{if $x$ > 1} \\
-1 + af(1 / x), &\text{if $x$ < 1} \\
-\end{cases}
-$$
+    $$
+    f^{-1}(x) =  
+    \begin{cases}
+    1,                      &\text{if $x$ = 1} \\
+    2 \times f^{-1}(x - 1), &\text{if $x$ > 1} \\
+    1 + f^{-1}(1 / x),      &\text{if $x$ < 1} \\
+    \end{cases}
+    $$
 
 *   實作時，我一開始用 C++ 寫了個分數 class，寫的落落長  
     [code1](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.cpp)  
