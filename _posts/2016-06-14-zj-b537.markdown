@@ -84,7 +84,7 @@ comments: true
     $$
 
 *   實作時，我一開始用 C++ 寫了個分數 class，寫的落落長  
-<script src="http://gist-it.appspot.com/http://github.com/prprprpony/oj/blob/master/zj/b537/b537-naive.cpp"></script>
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/b537/b537-naive.cpp"></script>
     後來仔細思考一下，發覺 \\(f^{-1}(x)\\) 其實可以化簡  
 
     $$
@@ -96,7 +96,7 @@ comments: true
     1 + f^{-1}(1 / x),      &\text{if $x$ < 1} \\
     \end{cases}
     $$
-<script src="http://gist-it.appspot.com/http://github.com/prprprpony/oj/blob/master/zj/b537/b537.c"></script>
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/b537/b537.c"></script>
 
     並且發現，這函數遞迴的方式跟 gcd 差不多嘛！  
     因此，其時間複雜度 =  \\(\gcd\\) 的時間複雜度 = \\(O(\log \min(a, b))\\)  
