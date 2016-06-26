@@ -84,9 +84,20 @@ comments: true
     $$
 
 *   實作時，我一開始用 C++ 寫了個分數 class，寫的落落長  
-    [code1](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.cpp)  
-    後來仔細思考一下，發覺其實可以化簡  
-    [code2](https://github.com/prprprpony/oj/blob/master/zj/ac/b537/b537.c)  
+<script src="http://gist-it.appspot.com/http://github.com/prprprpony/oj/blob/master/zj/b537/b537-naive.cpp"></script>
+    後來仔細思考一下，發覺 \\(f^{-1}(x)\\) 其實可以化簡  
+
+    $$
+    f^{-1}(x) =  
+    \begin{cases}
+    1,                      &\text{if $x$ = 1} \\
+    2^{x - 1},                    &\text{if $x$ > 1 $\land$ $x$ $\in$ N} \\
+    2^{\lfloor x \rfloor} \times f^{-1}(x - \lfloor x \rfloor), &\text{if $x$ > 1 $\land$ $x$ $\notin$ N} \\
+    1 + f^{-1}(1 / x),      &\text{if $x$ < 1} \\
+    \end{cases}
+    $$
+<script src="http://gist-it.appspot.com/http://github.com/prprprpony/oj/blob/master/zj/b537/b537.c"></script>
+
     並且發現，這函數遞迴的方式跟 gcd 差不多嘛！  
-    因此，其時間複雜度 =  \\(\gcd\\) 的時間複雜度 = \\(O(\log \min(a, b))\\)
+    因此，其時間複雜度 =  \\(\gcd\\) 的時間複雜度 = \\(O(\log \min(a, b))\\)  
     使其 worst case 的測資為費式數列相鄰的兩項  
