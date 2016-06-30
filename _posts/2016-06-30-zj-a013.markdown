@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "zj a013: 羅馬數字"
+date:   2016-06-30 23:39:55 +0800
+categories: oj zj
+comments: true
+---
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=a013)
+
+是的，沒錯，我沒寫過羅馬數字(ゝ∀･)  
+雖然依稀記得某次比賽的題目有羅馬數字  
+不過那是團體賽，那題不是我寫的  
+我隊伍裡的肥宅用了本地<del>手動</del>建表法過惹  
+而且那次還是人工 judge 的樣子  
+他沒有化到最簡也給過  
+呵呵
+
+總之有兩個部份，一個是把阿拉伯數字轉成羅馬數字，一個是把羅馬數字轉成阿拉伯數字。
+
+我懶得解釋惹，你還是自己看 code 好惹。
+
+用了很暴力的寫法，因為我好懶。
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/a013.cpp"></script>
