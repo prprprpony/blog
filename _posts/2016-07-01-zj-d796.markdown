@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "zj d796: 區域調查"
+date:   2016-07-01 01:59:58 +0800
+categories: oj zj
+comments: true
+---
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=d796)
+
+這是一題單點修改，區間詢問的題目，而且詢問的還是具備區間加法跟區間減法兩個漂亮性質的問題，區間元素和。
+
+相信看到上述關鍵字，大部份的人類（？都會想到 [BIT (Binary Indexed Tree)](https://en.wikipedia.org/wiki/Fenwick_tree) 吧。
+不過這題要維護的是一個矩陣，而不是常見的一維陣列，所以我思考了一下，決定先去吃個午餐。
+
+吃午餐時就想到怎麼做惹！
+
+首先，其實你可以把二維想成一維，只是每個元素是一個一維的 BIT。
+
+你就會知道怎麼取得 \\((1, 1)\\) 到 \\((x, y)\\) 的元素和惹
+
+然後再[排容](https://zh.wikipedia.org/wiki/%E6%8E%92%E5%AE%B9%E5%8E%9F%E7%90%86)一下
+
+你就會知道怎麼取得 \\((x_1, y_1)\\) 到 \\((x_2, y_2)\\) 的元素和惹
+
+然後就打出來了（？
+
+然後更高維的你也會打了（？
+
+本題時間複雜度
+
+$$
+T(N, Q) = O(N^2\log^2N + Q\log^2N)  \\
+1 \le N \le 250, 1 \le Q \le 500000
+$$
+
+喔對了，雖然題目說 \\(x_1 \le x \le x_2, y_1 \le y \le y_2\\) ，不過那是騙你的，記得要檢查喔。
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/d796.cpp"></script>
