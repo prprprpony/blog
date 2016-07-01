@@ -29,7 +29,7 @@ comments: true
 本題時間複雜度
 
 $$
-T(N, Q) = O(N^2\log^2N + Q\log^2N)  \\
+T(N, Q) = O(N^2 + Q\log^2N)  \\
 1 \le N \le 250, 1 \le Q \le 500000
 $$
 
