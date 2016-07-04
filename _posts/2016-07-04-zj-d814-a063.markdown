@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "zj d814, a063: SGU 187. Twist and whirl - want to cheat && 加強版"
+date:   2016-07-04 16:45:50 +0800
+categories: oj zj treap
+comments: true
+---
+*   [d814](http://zerojudge.tw/ShowProblem?problemid=d814)
+*   [a063(題目一樣，測資加強)](http://zerojudge.tw/ShowProblem?problemid=a063)
+*   [Google 到的 merge-split treap 教學](http://dwjshift.logdown.com/posts/235852)
+
+總之就是把一個可分裂合併的 BST 當成一個 array  
+區間操作就變成把代表那區間的子樹割出來，用 lazy propagation 取代暴力修改  
+於是區間操作就變成\\(O(\log N)\\)了  
+
+貼一下我習慣的 treap 寫法這樣  
+雖然大部份跟 [2016 IOI Camp](https://www.facebook.com/ioicamp/) 的講義一樣就是了
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/d814.cpp"></script>
