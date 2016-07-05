@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "UVa 12113 - Overlapping Squares"
+date:   2016-07-04 16:45:50 +0800
+categories: oj uva brute_force
+comments: true
+---
+*   [problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3265)
+
+*   題目：  
+    有一個 \\(4 \times 4\\) 的正方形平面，你可以放很多個 \\(2 \times 2\\) 的正方形上去，後面放上去的會蓋掉前面的。
+    給你一個盤面，問是否能用 6 個或更少正方形擺出來？
+
+*   解法：  
+    觀察盤面可以發現
+    1.   可以放正方形的位置只有 9 個。
+    2.   選同樣的地方，放的順序不同可能會長的不一樣。
+    3.   同一個地方放兩次，相當於第一次沒放。
+
+    於是掐指一算，能用 1 ~ 6 個擺出來的盤面最多 \\(\sum_{i = 1}^6 \mathsf P^9_i = 79209\\) 個。
+
+    有夠少！ᕕ ( ᐛ ) ᕗ  
+    把它們暴搜出來，存在一個能快速搜尋的資料結構，讀入測資時查找就 Okay 啦！
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/uva/12113.cpp"></script>
