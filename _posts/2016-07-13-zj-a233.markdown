@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "zj a233: 排序法~~~ 挑戰極限 [sort 裸題] [flashsort]"
+date:   2016-07-13 17:03:58 +0800
+categories: oj zj sort
+comments: true
+---
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=a233)
+
+*   題目：  
+    排序\\(N\\)(\\(N \le 10^6\\))個正整數的裸題。
+
+*   解法：  
+    直接用 stl 的 sort 也太無趣了！  
+    大家都會寫的 comparison sort(merge sort, quicksort, heapsort, etc.) 極限就是 \\(\Omega (N \log N)\\)，也很無趣！  
+    於是我去 wikipedia 的 [sort](https://en.wikipedia.org/wiki/Sorting_algorithm) 條目隨便挑一個 non-comparison sort 來寫醬！  
+
+*   [Flashsort](https://en.wikipedia.org/wiki/Flashsort)!  
+    基本上可視為 [bucket sort](https://en.wikipedia.org/wiki/Bucket_sort) 的一種，對於分佈均勻的資料可以做到 \\(O(N)\\)。  
+    把資料 \\(A\\) 分成 \\(M\\) 個區間，編號為 \\(0\\) ~ \\(M-1\\) (wikipedia 條目裡是從 \\(1\\) 開始編號)，則\\(A_i\\) 的區間編號為
+
+    $$K(A_i) = \lfloor (M - 1) \frac {A_i - A_{min}} {A_{max} - A_{min}} \rfloor $$
+
+    如果資料分佈均勻，那每個區間的元素約有\\(\frac N M\\) 個，\\(M\\) 相對於\\(N\\)夠大時，把每個區間分別 insertion sort 即可做到\\(O(N)\\)。
+
+    空間複雜度最佳的作法只需要用一個輔助陣列 \\(L\\) 紀錄每個區間的元素排序後在 \\(A\\) 裡的下標的上界，就可以把 \\(A\\) 當成自己的 bucket。
+    空間複雜度為 \\(\Theta (M)\\)。
+
+*   實作方面：  
+    遇到資料分佈不均的狀況，用 insertion sort 會 \\(O(N^2)\\) 爛掉，可行的作法是套複雜度較佳的排序法（如 quicksort），這樣遇到分佈平均的資料能\\(O(N)\\)，不平均的至少不會比 \\(O(N \log N)\\)差。  
+
+    我一次丟這題時就 TLE，後來套 stl 的 sort 能 AC（g++ 的實作是 introsort），
+    後來試著遞迴 flashsort 下去，也 AC 了，不過這樣基本上只是分比較多區的 quicksort，意義不大。
+    實際上跑的時間也跟 flashsort 套 introsort 或直接 introsort 差不多。  
+
+    果然 flashsort 還是要平均分佈的資料才能凸顯它的價值啊。
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/a233/a233.cpp"></script>
