@@ -1,10 +1,17 @@
 ---
 layout: post
-title:  "sgu 185. Two shortest [shortest path] [max flow] [MLE MLE MLE]"
+title:  "sgu 185. Two shortest [shortest path] [max flow] [MLE!MLE!MLE!]"
 date:   2016-08-24 15:07:12 +0800
 categories: oj sgu shortest_path max_flow
 comments: true
 ---
+*   閒聊<del>廢話</del>：  
+	是 MLE!MLE!MLE! 不是 [ME!ME!ME!](http://animatorexpo.com/mememe/) ㄛ  
+
+	[這個 OJ](http://acm.sgu.ru/) 是看 dreamoon [這篇 blog](http://codeforces.com/blog/entry/16599) 才知道的  
+	想說去上面隨便挑一題比較多人 AC 的來寫，就被卡記憶體卡到哭哭  
+	然後 dreamoon 真的好神喔 >///<
+
 *   [problem link](http://acm.sgu.ru/problem.php?contest=0&problem=185)
 
 *   題目：給一個最多 400 個點的無向圖，求兩條從 1 到 N 無公共邊的最短路。
@@ -32,10 +39,5 @@ comments: true
 	為了降低記憶體用量，用 deque 而不是 vector 存邊
 	
 	Time Complexity:\\(O(VE + V^2E) = O(V^2E)\\)
-
-*   閒聊<del>廢話</del>：  
-	[這個 OJ](http://acm.sgu.ru/) 是看 dreamoon [這篇 blog](http://codeforces.com/blog/entry/16599) 才知道的  
-	想說去上面隨便挑一題比較多人 AC 的來寫，就被卡記憶體卡到哭哭  
-	然後 dreamoon 真的好神喔 >///<
 
 <script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/sgu/185.cpp"></script>
