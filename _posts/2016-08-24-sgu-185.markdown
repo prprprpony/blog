@@ -1,0 +1,41 @@
+---
+layout: post
+title:  "sgu 185. Two shortest [shortest path] [max flow] [MLE MLE MLE]"
+date:   2016-08-24 15:07:12 +0800
+categories: oj sgu shortest_path max_flow
+comments: true
+---
+*   [problem link](http://acm.sgu.ru/problem.php?contest=0&problem=185)
+
+*   題目：給一個最多 400 個點的無向圖，求兩條從 1 到 N 無公共邊的最短路。
+
+*   解法：先算出各點到 1 的最短距離，再建一個 flow 的圖  
+	s 到 1 建一條容量為 2 的邊  
+	為最短路樹上的每條邊各建一條對應的容量為 1 的邊  
+	以 N 的對應節點為 t  
+	求 s-t 最大流，若為 2 則有解  
+	dfs 輸出解即可
+
+*   實作：
+	本題規模很小，看起來應該隨便都能過，然而......  
+	本題卡記憶體= =，4096 KB   
+	看我那精美的 edge struct 就知道惹  
+
+	最短路方面我一開始用 Dijkstra + stl priority_queue  
+	但不停 MLE  
+	因為 stl priority_queue 不支援 decrease key  
+	所以更新 heap 時是直接丟新結點，空間複雜度多了 \\(O(E)\\)  
+	如果自己寫個支援 decrease key 的 heap ，空間複雜度會降到 \\(O(V)\\)，應該能過  
+	但我懶，就改用 spfa 惹，空間複雜度一樣 \\(O(V)\\)
+	
+	最大流我用 Dinic，我還是只會 Dinic（自動無視某個\\(O(VE^2)\\)的演算法），跟全國賽時一樣，呵呵  
+	為了降低記憶體用量，用 deque 而不是 vector 存邊
+	
+	Time Complexity:\\(O(VE + V^2E) = O(V^2E)\\)
+
+*   閒聊<del>廢話</del>：  
+	[這個 OJ](http://acm.sgu.ru/) 是看 dreamoon [這篇 blog](http://codeforces.com/blog/entry/16599) 才知道的  
+	想說去上面隨便挑一題比較多人 AC 的來寫，就被卡記憶體卡到哭哭  
+	然後 dreamoon 真的好神喔 >///<
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/sgu/185.cpp"></script>
