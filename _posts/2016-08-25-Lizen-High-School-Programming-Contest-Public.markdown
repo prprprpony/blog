@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "立人高中程式設計校內排名賽（亂入）"
+title:  "立人高中程式設計校內排名賽（亂入心得暨題解）"
 date:   2016-08-25 14:51:32 +0800
 categories: contest
 comments: true
