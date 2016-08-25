@@ -5,8 +5,7 @@ date:   2016-08-24 21:16:11 +0800
 categories: oj gj backtracking
 comments: true
 ---
-*   [problem link](http://www.tcgs.tc.edu.tw:1218/ShowProblem?problemid=d062)
-
+*   [problem link](http://www.tcgs.tc.edu.tw:1218/ShowProblem?problemid=d062) 
 *   題目：感覺跟 [TSP](https://en.wikipedia.org/wiki/Travelling_salesman_problem) 有八成像www
 
 *   解法：

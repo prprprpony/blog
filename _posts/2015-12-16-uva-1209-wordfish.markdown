@@ -4,16 +4,17 @@ title:  "uva 1209 Wordfish"
 date:   2015-12-16 19:01:33 +0800
 categories: oj uva
 ---
-[Problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3650)
-
-* 題意：對於給定的字串，在它依字典序排列的全排列中，  
+*   [Problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3650) 
+*   題意：對於給定的字串，在它依字典序排列的全排列中，  
 以它為中心的連續二十一個排列裡，  
 輸出有最大的相鄰字元差距絕對值最小值者加上它的相鄰字元差距絕對值最小值，  
 若有多個排列都有最大的相鄰字元差距絕對值最小值，取字典序最前者。
-* 是的我知道超饒口，也許看原文比較好懂（吧），請君自便。  
+
+*   是的我知道超饒口，也許看原文比較好懂（吧），請君自便。  
 本來想自己寫排列函式，但想起 STL 裡好像有 *next\_permutation* 這東東  
 查了 reference 又找到 *prev_permutation* ，惰性大發，就不自己寫啦，JoJo！
-* 因為寫的時候腦死，題目又很饒口，懶的想函式名，直接把題目內的文字複製貼上  
+
+*   因為寫的時候腦死，題目又很饒口，懶的想函式名，直接把題目內的文字複製貼上  
 創造出了 **minimum\_absolute\_distance\_between\_consecutive\_letters** 這種怪物  
 哇哈哈哈哈哈哈哈哈哈
 

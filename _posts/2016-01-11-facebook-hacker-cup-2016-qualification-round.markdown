@@ -5,7 +5,6 @@ date:   2016-01-11 19:38:02 +0800
 categories: facebookhackercup
 comments: true
 ---
-
 被學長推坑參加  
 第一次參加這種大型程式競賽  
 規則蠻特別的  

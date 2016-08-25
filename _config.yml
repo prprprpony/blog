@@ -18,3 +18,4 @@ paginate: 5
 paginate_path: "/page:num/"
 # Build settings
 markdown: kramdown
+#excerpt_separator: "<!--excerpt-->"

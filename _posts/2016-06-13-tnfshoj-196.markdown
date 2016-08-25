@@ -7,6 +7,7 @@ comments: true
 ---
 *   [problem link](http://toj.tfcis.org/oj/pro/196/)
 *   題目理解：給 N (N <= 10^5) 個數字，第 i 個為 Si (0 <= Si <= 10^5)，給 Q (Q <= 10^5) 個詢問，第 i 個為 Wi (0 <= Wi <= 2 \* 10^5)，問是否存在 Si + Sj == Wi (i <= j)？
+
 *   解法：  
     首先先將 S 照升序排序  
     對於每筆詢問，先特判一定無解的狀況(S[0] * 2 > W or S[N-1] * 2 < W) 跟 i == j 的狀況(此時 W 為偶數，二分搜 W/2 即可)  
@@ -25,5 +26,6 @@ comments: true
 *   <del>其實照這題的規模這樣的複雜度應該是過不了的，可能是測資太善良吧</del>  
     測資更新惹，我的 code TLE 惹  
     等我或其他人想出更好的解再更新吧 
+*   蜥蜴說是用 [FFT](https://en.wikipedia.org/wiki/Fast_Fourier_transform) 解，然而我不會 QAQ
 
 <script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/tnfshoj/196.cpp"></script>

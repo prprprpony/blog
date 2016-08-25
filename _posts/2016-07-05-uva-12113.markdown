@@ -5,8 +5,7 @@ date:   2016-07-04 16:45:50 +0800
 categories: oj uva brute_force
 comments: true
 ---
-*   [problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3265)
-
+*   [problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3265) 
 *   題目：  
     有一個 \\(4 \times 4\\) 的正方形平面，你可以放很多個 \\(2 \times 2\\) 的正方形上去，後面放上去的會蓋掉前面的。
     給你一個盤面，問是否能用 6 個或更少正方形擺出來？

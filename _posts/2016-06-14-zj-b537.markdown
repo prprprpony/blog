@@ -16,8 +16,7 @@ comments: true
     \frac 1 {f(k - 1)}  &\text{if $k$ is odd} \\
     1 + f(\frac k 2)    &\text{if $k$ is even}
     \end{cases}
-    $$
-
+    $$  
     給定 $$ \{ a \in N, b \in N \mid 1 \le a, b \le 60 \} $$，求 $$ \{ k \in N \mid f(k) = \frac a b \} $$
 
 *   解法：  

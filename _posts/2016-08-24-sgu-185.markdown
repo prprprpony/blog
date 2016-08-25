@@ -7,7 +7,6 @@ comments: true
 ---
 *   閒聊<del>廢話</del>：  
 	是 MLE!MLE!MLE! 不是 [ME!ME!ME!](http://animatorexpo.com/mememe/) ㄛ  
-
 	[這個 OJ](http://acm.sgu.ru/) 是看 dreamoon [這篇 blog](http://codeforces.com/blog/entry/16599) 才知道的  
 	想說去上面隨便挑一題比較多人 AC 的來寫，就被卡記憶體卡到哭哭  
 	然後 dreamoon 真的好神喔 >///<

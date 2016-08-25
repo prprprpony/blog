@@ -6,10 +6,8 @@ categories: oj zj sort
 comments: true
 ---
 *   [problem link](http://zerojudge.tw/ShowProblem?problemid=a233)
-
 *   題目：  
     排序\\(N\\)(\\(N \le 10^6\\))個正整數的裸題。
-
 *   解法：  
     直接用 stl 的 sort 也太無趣了！  
     大家都會寫的 comparison sort(merge sort, quicksort, heapsort, etc.) 極限就是 \\(\Omega (N \log N)\\)，也很無趣！  

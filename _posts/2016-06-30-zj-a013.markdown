@@ -5,8 +5,7 @@ date:   2016-06-30 23:39:55 +0800
 categories: oj zj
 comments: true
 ---
-*   [problem link](http://zerojudge.tw/ShowProblem?problemid=a013)
-
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=a013)  
 是的，沒錯，我沒寫過羅馬數字(ゝ∀･)  
 雖然依稀記得某次比賽的題目有羅馬數字  
 不過那是團體賽，那題不是我寫的  

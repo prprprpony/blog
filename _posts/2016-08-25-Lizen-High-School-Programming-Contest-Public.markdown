@@ -6,11 +6,9 @@ categories: contest
 comments: true
 ---
 [懶人包(README.md)](https://github.com/prprprpony/oj/tree/master/Lizen-High-School-Programming-Contest-Public-2016-08-20)  
-[題目](https://github.com/yqkqknct/Lizen-High-School-Programming-Contest-Public/blob/master/statement.pdf)
-
+[題目](https://github.com/yqkqknct/Lizen-High-School-Programming-Contest-Public/blob/master/statement.pdf)  
 在 19 號晚上，yqkqknct 突然密我，丟了這個[連結](https://www.facebook.com/groups/1500275723594463/permalink/1747026845586015/)給我，問我要不要來踢館  
-于是乎隔天早上早餐到午餐時間都在 coding
-
+於是乎隔天早上早餐到午餐時間都在 coding  
 比賽時因為預測題目不會太難就照順序寫了www  
 結果還不錯，解了 5 題，剩一題構造題只拿部份分，最後排名第 2  
 覺得好像多了一點信心  
