@@ -1,0 +1,35 @@
+---
+layout: post
+title:  "poj 2104: K-th Number [劃分樹]"
+date:   2016-08-27 11:02:10 +0800
+categories: oj
+tags: [oi, oj, poj, selection, partition, segment tree]
+comments: true
+---
+*   [problem link](http://poj.org/problem?id=2104) 
+*   題目：  
+	給你一個有 \\(n\\) 個整數的陣列 \\(a[1..n]\\)，有 \\(m\\) 筆詢問，  
+	每筆\\((i, j, k)\\)問你 \\(a[i..j]\\) 中第 \\(k\\) 小的數為何
+*   解法：相信大家都會寫持久化線段樹的作法，我就不介紹了  
+	今天用的是一種叫劃分樹的資料結構，感覺是中國選手自己搞出來的東西  
+	因為找不到英文的資料  
+	倒是 google 的到很多簡體中文資料  
+	隨便貼其中一個[划分树 - pony1993 - 博客园](http://www.cnblogs.com/pony1993/archive/2012/07/17/2594544.html)，說明應該比我清楚  
+
+*   劃分樹可視為一種線段樹，但每個結點存的是一段子序列\\([l,r]\\)  
+	每個節點的左孩子依序儲存該區間 \\(\le\\) 中位數的數  
+	右孩子依序儲存該區間 \\(\ge\\) 中位數的數  
+	為了二分區間，跟中位數相等的數的要特別處理  
+	使得兩孩子的區間長度差 \\(\le\\) 1  
+	同時，每個節點也儲存一個陣列 \\(cnt\\)  
+	\\(cnt[i] = [l..i]\\) 中有多少元素進入左子樹  
+	
+	有了 \\(cnt\\) 陣列後不難推出查詢方法
+
+*   時間複雜度：\\(\mathcal{O}(n \log n + m \log n)\\)  
+	空間複雜度：\\(\mathcal{O}(n \log n)\\)  
+	時空複雜度好像比持久化線段好一點，因為持久化線段樹是對值域取 \\(\log\\)，  
+	劃分樹則是對元素個數    
+	不過持久化線段樹也可以把資料離散化就是了，那就跟劃分樹一樣了
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/poj/2104.cpp"></script>
