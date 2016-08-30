@@ -6,6 +6,11 @@ layout: default
 	<header class="major">
 			<h2>{{ post.title }} @ {{ post.date | date: "%b %-d, %Y" }}</h2>
 		</header>
+		<b>tags:</b>
+			{% for tag in post.tags %}
+				<a href="{{ site.url }}{{ site.baseurl }}/tag.html#{{ tag | slugify }}"> {{ tag }} </a> &nbsp;
+			{% endfor %}
+
 		<!--<p>{{ post.content | strip_html | truncatewords:175}}</p>-->
 		{{ post.excerpt }}
 		<ul class="actions left"> 

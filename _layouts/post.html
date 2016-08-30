@@ -9,16 +9,10 @@ layout: default
     <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
   </header>
 
-{% comment %}
-=======================
-The purpose of this snippet is to list all the tags you have in your site.
-=======================
-{% endcomment %}
-<b>tags:</b>
-{% for tag in page.tags %}
-<a href="{{ site.url }}{{ site.baseurl }}/tag.html#{{ tag | slugify }}"> {{ tag }} </a> &nbsp;
-{% endfor %}
-
+  <b>tags:</b>
+    {% for tag in page.tags %}
+      <a href="{{ site.url }}{{ site.baseurl }}/tag.html#{{ tag | slugify }}"> {{ tag }} </a> &nbsp;
+    {% endfor %}
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
