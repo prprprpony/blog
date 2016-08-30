@@ -2,7 +2,7 @@
 layout: post
 title:  "立人高中程式設計校內排名賽（亂入心得暨題解）"
 date:   2016-08-25 14:51:32 +0800
-categories: contest
+tags: [programming contest, oi]
 comments: true
 ---
 [懶人包(README.md)](https://github.com/prprprpony/oj/tree/master/Lizen-High-School-Programming-Contest-Public-2016-08-20)  

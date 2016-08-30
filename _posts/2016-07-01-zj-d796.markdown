@@ -2,7 +2,7 @@
 layout: post
 title:  "zj d796: 區域調查"
 date:   2016-07-01 01:59:58 +0800
-categories: oj zj
+tags: [oj, zj, Fenwick tree, 2D]
 comments: true
 ---
 *   [problem link](http://zerojudge.tw/ShowProblem?problemid=d796)

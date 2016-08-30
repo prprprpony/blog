@@ -2,7 +2,7 @@
 layout: post
 title:  "zj a233: 排序法~~~ 挑戰極限 [sort 裸題] [flashsort]"
 date:   2016-07-13 17:03:58 +0800
-categories: oj zj sort
+tags: [oj, zj, sort, flash sort]
 comments: true
 ---
 *   [problem link](http://zerojudge.tw/ShowProblem?problemid=a233)

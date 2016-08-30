@@ -2,7 +2,7 @@
 layout: post
 title:  "tnfshoj 196 / A. 難忘的回憶"
 date:   2016-06-13 20:58:52 +0800
-categories: oj tnfshoj two_pointers
+tags: [oj, tnfshoj, two pointers, FFT]
 comments: true
 ---
 *   [problem link](http://toj.tfcis.org/oj/pro/196/)

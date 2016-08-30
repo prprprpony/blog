@@ -2,7 +2,7 @@
 layout: post
 title:  "UVa 12113 - Overlapping Squares"
 date:   2016-07-04 16:45:50 +0800
-categories: oj uva brute_force
+tags: [oj, uva, brute force]
 comments: true
 ---
 *   [problem link](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3265) 

@@ -2,7 +2,7 @@
 layout: post
 title:  "全國賽心得"
 date:   2015-12-20 20:36:15 +0800
-categories: oi
+tags: [programming contest, oi, TOI]
 ---
 是說這裡本來想放解題報告的，但我懶的寫...  
 只有把 code 丟 [github](https://github.com/prprprpony/oj)  

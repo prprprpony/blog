@@ -2,7 +2,7 @@
 layout: post
 title:  "zj a013: 羅馬數字"
 date:   2016-06-30 23:39:55 +0800
-categories: oj zj
+tags: [oj, zj]
 comments: true
 ---
 *   [problem link](http://zerojudge.tw/ShowProblem?problemid=a013)  

@@ -2,7 +2,7 @@
 layout: post
 title:  "firefox 47: about:performance"
 date:   2016-06-18 17:27:49 +0800
-categories: firefox
+tags: [firefox, tips]
 comments: true
 ---
 因為覺得自己的 firefox 有點當，便 google 了一下解決方法，找到了[這篇](http://techdows.com/2016/06/disable-pocket-hello-system-add-ons-in-firefox-release-or-stable-channel-using-about-performance.html "Firefox 47: Use about: performance page to disable Pocket and Hello System Add-ons &#124; Techdows")。

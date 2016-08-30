@@ -2,7 +2,7 @@
 layout: post
 title:  "zj d814, a063: SGU 187. Twist and whirl - want to cheat && 加強版"
 date:   2016-07-04 16:45:50 +0800
-categories: oj zj treap
+tags: [oj, sgu, zj, treap]
 comments: true
 ---
 *   [d814](http://zerojudge.tw/ShowProblem?problemid=d814)

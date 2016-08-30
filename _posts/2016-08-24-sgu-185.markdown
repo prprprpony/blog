@@ -2,7 +2,7 @@
 layout: post
 title:  "sgu 185. Two shortest [shortest path] [max flow] [MLE!MLE!MLE!]"
 date:   2016-08-24 15:07:12 +0800
-tags: [oj, sgu, shortest_path, max_flow]
+tags: [oj, sgu, shortest path, max flow, spfa, dinic]
 comments: true
 ---
 *   閒聊<del>廢話</del>：  

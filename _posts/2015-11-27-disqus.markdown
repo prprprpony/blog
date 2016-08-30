@@ -2,7 +2,7 @@
 layout: post
 title:  "Disqus 有點麻煩"
 date:   2015-11-27 19:11:33 +0800
-categories: disqus
+tags: [disqus]
 comments: true
 ---
 調了好久，囧  

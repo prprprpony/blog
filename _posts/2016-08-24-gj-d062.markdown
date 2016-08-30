@@ -2,7 +2,7 @@
 layout: post
 title:  "gj d062: 5.最短路徑 [brute force] [back tracking] [pruning]"
 date:   2016-08-24 21:16:11 +0800
-categories: oj gj backtracking
+tags: [oj, gj, backtracking]
 comments: true
 ---
 *   [problem link](http://www.tcgs.tc.edu.tw:1218/ShowProblem?problemid=d062) 
