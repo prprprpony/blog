@@ -1,0 +1,137 @@
+---
+layout: post
+title:  "cf 717A: Festival Organization [math]"
+date:   2016-09-17 00:41:59 +0800
+tags: [oj, cf, math]
+comments: true
+---
+*   [problem link](http://codeforces.com/contest/717/problem/A) 
+*   問題：從長度在 \\( [l, r] \\) 的沒有連續兩個 0 的 01 序列中，同樣長度的選 k 個，有幾種選法？（輸出選法數除以 \\(10^9+7\\) 的餘數）
+(\\(1 \le k \le 200, \; 1 \le l \le r \le 10^{18} \\))
+
+*   想法：
+令 \\(a_i = \\) 長度 \\(i\\)，沒有連續兩個 0，以 1 結尾的 01 序列數量  
+\\(b_i = \\) 長度 \\(i\\)，沒有連續兩個 0，以 0 結尾的 01 序列數量  
+\\(c_i = \\) 長度 \\(i\\)，沒有連續兩個 0 的 01 序列數量  
+不難得出
+
+$$
+a_i = c_{i-1} \\
+b_i = a_{i-1}\\
+c_i = a_i + b_i\\
+= c_{i-1} + a_{i-1}\\
+= c_{i-1} + c_{i-2}\\
+$$
+
+而且 \\(c_1 = 2, c_2 = 3\\)，可發現\\(c_i =\\) 第 \\(i+2\\) 個費波那契數
+
+$$
+F_0 = 0, F_1=  1\\
+F_n = F_{n-1} + F_{n-2}\\
+Ans = \sum_{i=l+2}^{r+2} \binom{F_i}{k}\\
+$$
+
+照這算式跑一定會 TLE
+可是我比賽時只有想到這裡 QAQ
+
+後來看到 Announcement 裡的[這個留言](http://codeforces.com/blog/entry/47016?#comment-314352) 的前三行就大概知道要怎麼解了
+
+首先
+
+$$
+Ans = \frac 1 {k!} \sum_{i=l+2}^{r+2} \prod_{j = 0}^{k-1} (F_i - j)\\
+$$
+
+發現連乘的部份只有 k 項，而且形式都一樣
+
+定義 \\(p(k, x) = \prod_{i=0}^{k-1}(x - i) = \sum_{j = 1}^{k} s(k, j) x^j\\)  
+$$
+\because p(k, x) =\prod_{i=0}^{k-1}(x - i) \\
+= [x - (k - 1)] \prod_{i=0}^{k-2}(x - i) \\
+= [x - (k - 1)]p(k-1, x) \\
+= [x - (k - 1)] \sum_{j = 1}^{k-1} s(k-1, j) x^j \\
+= x \sum_{j = 1}^{k-1} s(k-1, j) x^j - (k - 1) \sum_{j = 1}^{k-1} s(k-1, j) x^j \\
+= \sum_{j = 1}^{k} [s(k-1, j-1) - (k-1)s(k-1, j)] x^j \\
+\therefore s(k, j) = -(k-1) \times s(k-1, i) + s(k-1, i-1)
+$$
+
+因此我們可以簡單的用 \\(O(k^2)\\) 的 DP 算出 \\(s(k,j)\\)
+
+$$
+Ans = \frac 1 {k!} \sum_{i=l+2}^{r+2} \sum_{j = 1}^{k} s(k, j) F_i^j\\
+= \frac 1 {k!} \sum_{j = 1}^{k} s(k, j) \sum_{i=l+2}^{r+2} F_i^j
+$$
+
+\\(F_i\\) 很礙眼，所以我們接著推倒（？）他的通式吧！
+
+$$
+\begin{align}
+&\text{let} \; F_n + \beta F_{n-1} = \alpha (F_{n-1} + \beta F_{n-2})\\
+&F_n = (\alpha - \beta)F_{n-1} + \alpha\beta F_{n-2}\\
+&\begin{cases}
+&\alpha - \beta & = 1\\
+&\alpha \times \beta & = 1
+&\end{cases}\\[1ex]
+&\alpha = \beta + 1\\
+&(\beta + 1) \beta = 1\\
+&\beta^2 + \beta - 1 = 0\\
+&\beta = \frac {-1 \pm \sqrt{1 - 4 \times (-1)}} {2} = \frac {-1 \pm \sqrt{5}} {2}\\
+&\alpha = \frac {1 \pm \sqrt{5}} {2} \\
+&\text{let} \; \phi = \frac {1 + \sqrt{5}} {2}\\
+&(\alpha, \beta) = (\phi, \frac 1 \phi) or (- \frac 1 \phi, -\phi)\\[2ex]
+&F_n + \frac 1 \phi F_{n-1} = \phi (F_{n-1} + \frac 1 \phi F_{n-2})\\
+&= \phi^{n-1} (F_1 + \frac 1 \phi F_0)\\
+&= \phi^{n-1}\\[5ex]
+&\text{let} \; F_n + A \phi^n = B(F_{n-1} + A \phi^{n-1})\\
+&F_n - B F_{n-1} = (-A \phi + AB) \phi^{n-1}\\
+&\begin{cases}
+&-B = \frac 1 \phi\\
+&-A \phi + AB = 1
+&\end{cases}\\
+&B = - \frac 1 \phi  = 1 - \phi\\
+&A(-\phi + 1 - \phi) = 1 \\
+&A = - \frac {1} {2 \phi - 1} = - \frac {1} {\sqrt{5}} \\[2ex]
+&F_n - \frac {\phi^n} {\sqrt{5}} = (-\phi)^{-1}(F_{n-1} - \frac {\phi^{n-1}} {\sqrt{5}})\\
+&= (-\phi)^{-n}(F_0 - \frac {\phi^0} {\sqrt{5}})\\
+&= - \frac {(-\phi)^{-n}} {\sqrt{5}}\\
+&F_n = \frac {\phi^n - (-\phi)^{-n}} {\sqrt{5}}\\
+\end{align}
+$$
+
+代回答案
+
+$$
+Ans = \frac {1} {k!} \sum_{j = 1}^{k} s(k, j) \sum_{i=l+2}^{r+2} [\frac {\phi^i - (-\phi)^{-i}} {\sqrt{5}}]^j \\
+= \frac {1} {k!} \sum_{j = 1}^{k} \frac {s(k, j)}{(\sqrt{5})^j} \sum_{i=l+2}^{r+2} [\phi^i - (-\phi)^{-i}]^j \\
+$$
+
+再套個二項式定理
+
+$$
+Ans = \frac {1} {k!} \sum_{j = 1}^{k} \frac {s(k, j)}{(\sqrt{5})^j} \sum_{i=l+2}^{r+2} \sum_{m=0}^j \binom{j}{m} (\phi^i)^m  [-(-\phi)^{-i}]^{j-m}\\
+=\frac {1} {k!} \sum_{j = 1}^{k} \frac {s(k, j)}{(\sqrt{5})^j} \sum_{m=0}^j \binom{j}{m} \sum_{i=l+2}^{r+2} (-1)^{(-i+1)(j-m)} \phi^{i(2m-j)}\\
+=\frac {1} {k!} \sum_{j = 1}^{k} \frac {s(k, j)}{(\sqrt{5})^j} \sum_{m=0}^j \binom{j}{m} (-1)^{j-m} \sum_{i=l+2}^{r+2} [(-1)^{m-j} \phi^{2m-j}]^i\\
+$$
+
+二項式係數可以 \\(O(k^2)\\) 預處理  
+而最後面\\(\sum_{i=l+2}^{r+2} [(-1)^{m-j} \phi^{2m-j}]^i\\) 不就是個等比級數嘛！  
+于是乎我們成功的把 \\(l,r\\) 兩個可能高達 \\(10^{18}\\) 的數字移到了可以用快速冪解決的問題！
+
+*   實作方面  
+運算過程中雖然有分數跟無理數，但用浮點數計算可能會有精度問題  
+分數的話模運算本來就可以處理  
+無理數部份  
+可以發現運算中牽涉到的無理數只有 \\(\sqrt 5\\)  
+我們可以用一個數對資料結構 \\((a, b)\\) 表示 \\(a + b \sqrt{5}\\)  
+再實作對應的四則運算函式即可
+
+*   第一份 AC 的 code  
+時間複雜度：\\(O(k^2 \log r)\\)
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/cf/717A/717A_clear.cpp"></script>
+
+*   觀察可發現，在第二層迴圈內解等比級數時其實不必用快數冪，運算所需的數字都可以遞推  
+覺得無聊就優化一下這樣  
+時間複雜度：\\(O(k^2)\\)  
+在 judge 上跑的時間是 31 ms  
+wwwww
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/cf/717A/717A_fast.cpp"></script>
