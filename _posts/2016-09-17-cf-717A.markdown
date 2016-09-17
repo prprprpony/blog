@@ -52,7 +52,7 @@ $$
 = [x - (k - 1)] \sum_{j = 1}^{k-1} s(k-1, j) x^j \\
 = x \sum_{j = 1}^{k-1} s(k-1, j) x^j - (k - 1) \sum_{j = 1}^{k-1} s(k-1, j) x^j \\
 = \sum_{j = 1}^{k} [s(k-1, j-1) - (k-1)s(k-1, j)] x^j \\
-\therefore s(k, j) = -(k-1) \times s(k-1, i) + s(k-1, i-1)
+\therefore s(k, j) = -(k-1) \times s(k-1, j) + s(k-1, j-1)
 $$
 
 因此我們可以簡單的用 \\(O(k^2)\\) 的 DP 算出 \\(s(k,j)\\)
@@ -129,7 +129,7 @@ $$
 時間複雜度：\\(O(k^2 \log r)\\)
 <script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/cf/717A/717A_clear.cpp"></script>
 
-*   觀察可發現，在第二層迴圈內解等比級數時其實不必用快數冪，運算所需的數字都可以遞推  
+*   觀察可發現，在第二層迴圈內解等比級數時其實不必用快速冪，運算所需的數字都可以遞推  
 覺得無聊就優化一下這樣  
 時間複雜度：\\(O(k^2)\\)  
 在 judge 上跑的時間是 31 ms  
