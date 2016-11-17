@@ -31,4 +31,4 @@ comments: true
 	劃分樹則是對元素個數    
 	不過持久化線段樹也可以把資料離散化就是了，那就跟劃分樹一樣了
 
-<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/poj/2104.cpp"></script>
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/poj/2104/2104_quicksort_tree.cpp"></script> 
