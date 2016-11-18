@@ -51,7 +51,7 @@ comments: true
 
 	AC 的輸出：字串編號排列\\( = (4,3,2,1)\\)
 
-			 IRC
+		  IRC
 			CIRC
 		  DDC
 		PMDRT
