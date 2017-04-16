@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "zj c176: TYVJ1681. 中中暴RP"
+date:   2017-04-16 08:28:05 +0800
+tags: [oj, zj, sqrt decomposition]
+comments: true
+---
+*   [problem link](http://zerojudge.tw/ShowProblem?problemid=c176)
+*   題目要求維護一個長度 \\(N\\) 的序列 \\(a\\)，會做 \\(K\\) 次操作，操作有兩種：
+	1. 把第 \\(i\\) 個到第 \\(j\\) 個元素加上 \\(x\\)
+	2. 查詢第 \\(i\\) 個到第 \\(j\\) 個元素中大於 \\(0\\) 的元素的和
+*   資料範圍：\\(N \le 10^5, K \le 2 \times 10^ 5, 過程中 -10^{13} \le a[i] \le 10^{13}\\)
+*   看到第一種操作直覺會想到可以用線段樹之類的做，但第二個操作就爛掉了。  
+	要找大於 0 的元素和，可以想到把元素由小到大排序後，預處理後綴和，
+    查詢時可以二分搜，區間加值就用一個變數存即可。  
+	之後發現線段樹要從左右子樹維護排序後的序列會爛掉。  
+	於是乎只能分塊搞一搞惹。
+*   Time Complexity: \\(O(K \sqrt N \log N)\\) 
+*   覺得這次分塊寫的特別乾淨就想貼上來 >///<
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/zj/c176.cpp"></script>
