@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "tioj 1556 . Weep"
+date:   2017-04-23 23:55:45 +0800
+tags: [oj, tioj, math]
+comments: true
+---
+*   [problem link](http://tioj.infor.org/problems/1556)  
+*   給定一正整數\\(N\\)，求符合\\(A \lt B \le N\\) 且 \\(A \| B\\)的正整數數對\\( (A,B) \\)的個數。\\( (N \le 10^{14}) \\)
+
+*   問題等價於求\\( \sum_{i=1}^N { (\lfloor \frac N i \rfloor - 1) } \\) ，直接\\( O(N) \\)算肯定會 TLE。
+*   \\( \sum_{i=1}^N { \lfloor \frac N i \rfloor} \\) 等於滿足 \\( i \le N, j \le N, ij \le N \\) 的正整數數對 \\( (i, j) \\) 的數量。
+*   令\\( u = \lfloor \sqrt N \rfloor \\)， \\((i,j)\\) 數對可分成三類
+	1. \\(i \le u, j \le u\\)
+	2. \\(i \le u, j \gt u\\)
+	3. \\(i \gt u, j \le u\\)
+*   顯然
+	1. 第 \\(1\\) 類的數量等於 \\(u^2\\)，因為任兩個不大於 \\(u\\) 的數相乘都不會大於 \\(N\\)
+	2. 第 \\(2\\) 類的數量與第 \\(3\\) 類相等（對稱）
+	3. 第 \\(1\\) 類加第 \\(2\\) 類的數量等於 \\( \sum_{i=1}^u {\lfloor \frac N i \rfloor} \\)
+*   於是乎排容一下可得到
+
+$$ \sum_{i=1}^N { \lfloor \frac N i \rfloor} = 2 \sum_{i=1}^u {\lfloor \frac N i \rfloor} - u^2 $$
+
+*   可以用 \\( O(\sqrt N) \\) 計算了，yay
+*   詳情請看維基百科 [Divisor summatory function - Wikipedia](https://en.wikipedia.org/wiki/Divisor_summatory_function) (?
+
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/tioj/1556.cpp"></script>
