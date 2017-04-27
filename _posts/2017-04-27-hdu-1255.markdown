@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "hdu 1255: 覆盖的面积"
+date:   2017-04-27 20:05:15 +0800
+tags: [oj, hdu, sweep line, segment tree]
+comments: true
+---
+*   [problem link](http://acm.hdu.edu.cn/showproblem.php?pid=1255)  
+*   直角座標平面上有一坨矩形，其邊皆與座標軸平行或垂直，請問被這些矩形覆蓋至少二次的面積是多少？
+
+*   突然發現 hdu 可以用 C++11，於是決定刷二題 \>///<
+*   TOI 名產 - 掃描線線段樹(?)
+*   第二次用 tuple \>///<
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/hdu/1255.cpp"></script>
