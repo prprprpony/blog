@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "tioj 1501: Dead at the end of sixth sense"
+date:   2017-04-28 12:06:30 +0800
+tags: [oj, tioj, two pointers]
+comments: true
+---
+*   [problem link](http://tioj.infor.org/problems/1501)  
+*   有 \\(N\\) 個數線上的整數點，編號 \\(1\\) 到 \\(N\\)，
+第 \\(i\\) 個點的座標是 \\(d_i\\)。  
+有一隻兔子一開始站在 \\(d_1\\) 上。  
+當牠站在 \\(d_i\\) 時，牠可以跳到 \\(d_{i + 1}\\) 或 \\(d_{i + 2}\\) 上。  
+當牠跳到 \\(d_N\\) 時，途中經過的最大座標是 \\(d_{max}\\) ，最小座標是 \\(d_{min}\\)。  
+請問該兔所有跳到 \\(d_N\\) 的方法中，\\(d_{max} - d_{min}\\) 的最小值是多少。  
+有 \\(T\\) 筆測資，\\(T \le 10^3\\)，\\( N \le 10^3 \\)。
+
+*   可以幫此問題建一個無向圖**☆**的模型，數線上兩點 \\(d_i, d_j\\) 有邊若且唯若 \\(\|i - j\| \le 2\\)。  
+數線上的一個區間 \\([a,b]\\) 對應到原圖 \\(G\\) 的一個子圖 \\(g(a,b) = [a,b] \cap G\\)。  
+求 \\( min \\{ b - a \mid \\{d_1, d_N\\} \subseteq g(a,b),  g(a,b) \text{ is connected} \\} \\)。  
+
+*   
+$$
+\begin{align}
+&	\forall a_1 \le \min(d_1,d_N), f(a_1) = min\{ b \mid \{d_1, d_N\} \subseteq g(a_1,b),  g(a_1,b) \text{ is connected} \} \\
+&	a_1 \le a_2 \le \min(d_1,d_N) \Rightarrow f(a_1) \le f(a_2) \\
+\\
+&	\text{Proof:}\\
+&	\because f(a_1) > f(a_2) \\
+&	\Rightarrow \{d_1, d_N\} \subseteq g(a_1,f(a_2)) \land g(a_1,f(a_2)) \text{ is connected} \\
+&   \Rightarrow f(a_1) = f(a_2) \\
+&   \Rightarrow\Leftarrow \\
+&   \therefore f(a_1) \le f(a_2) 
+\end{align}
+$$
+
+*   因為上述單調性，可以用雙指標掃過數線，維護當前區間內的連通分量個數。
+*   注意爆 int \>///<
+*   Time Complexity:\\(O(T N \log N)\\)，因為要對輸入照座標排序，雙指標的部份是 \\(O(N)\\) 的。
+<script src="https://gist-it.appspot.com/https://github.com/prprprpony/oj/blob/master/tioj/1501.cpp"></script>
