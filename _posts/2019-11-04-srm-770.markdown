@@ -218,9 +218,9 @@ class ShoppingSpree {
 可得出  
 $$
 \begin{align*}
-F(x) &= \frac{x^i}{\prod_{j=1}^{i} A_i }\text{ if }x \in [A_{i+1}, A_i] \\
-f(x) &= \frac{d F(x)}{dx} = \frac{i x^{i-1}}{\prod_{j=1}^{i} A_i }\text{ if }x \in [A_{i+1}, A_i]\\
-E[A_{i+1} \le X \le A_i] &= \int_{A_{i+1}}^{A_i} x f(x) dx = \frac{i x^{i+1}}{ (i+1) \prod_{j=1}^{i} A_i }
+F(x) &= \frac{x^i}{\prod_{j=1}^{i} A_j }\text{ if }x \in [A_{i+1}, A_i] \\
+f(x) &= \frac{d F(x)}{dx} = \frac{i x^{i-1}}{\prod_{j=1}^{i} A_j }\text{ if }x \in [A_{i+1}, A_i]\\
+E[A_{i+1} \le X \le A_i] &= \int_{A_{i+1}}^{A_i} x f(x) dx = \frac{i x^{i+1}}{ (i+1) \prod_{j=1}^{i} A_j }
 \end{align*}
 $$
 
