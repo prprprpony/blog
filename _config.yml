@@ -20,3 +20,5 @@ paginate_path: "/page:num/"
 markdown: kramdown
 #excerpt_separator: "<!--excerpt-->"
 permalink: pretty
+sass:
+    sass_dir: _sass
