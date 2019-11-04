@@ -1,0 +1,272 @@
+---
+layout: post
+title:  "TopCoder SRM 770 Div1"
+date:   2017-04-28 12:06:30 +0800
+tags: [srm]
+comments: true
+---
+
+[standings](https://community.topcoder.com/stat?c=round_stats_sorted&rd=17723&sr=51&er=100&nr=50&dn=1&sq=Round_Statistics_Data&sc=16&sd=asc)  
+其實這場蠻水的，只是我賽中 Medium 想很久只想出假解 FST，最後只過了 Easy，rank 58。
+看完 tourist 的 code 才發現 Medium 很簡單，
+比完躺在床上睡覺時就發現 Hard 過份簡單。
+
+## [Easy: DeleteArrays](https://community.topcoder.com/stat?c=problem_statement&pm=15738)  
+### 題意
+給定 \\(A,B,C\\) 三個正整數序列跟三個常數 \\(x,y,z\\)，
+可以執行若干次操作，
+每次從兩個相異序列各裡刪掉一項，
+一次操作的 cost 是刪掉的數字和加上 \\( (刪 A,B: x;\; 刪 B,C: y;\; 刪 A,C: z)  \\)。
+求三個序列剩下的數字和的最小值，以及達成該和的最小總 cost。
+
+### 解法
+首先會發現 cost 裡「刪掉的數字和」是假議題，因為序列總和是常數，
+剩下的最小和也是常數，所以這部份貢獻的 cost 也是常數。
+
+要最小化數字和的話，因為序列裡都是正整數，當有兩個序列都非空時一定會做操作，
+因此最多只會剩下一個序列非空。
+
+把 \\(A,B,C\\) 排序後，
+只有他們的前綴可能是答案，
+而且只需考慮最短可行的前綴和。
+
+WLOG，要刪完 \\(B,C\\)，留下 \\(A\\) 盡量短的前綴。
+那策略很顯然，就是一直刪 \\(B,C\\) 直到 \\(len(B) + len(C) <= len(A)\\)，
+再用剩下的 \\(B,C\\) 去消除 \\(A\\) 的後綴。
+到這邊發現最小化 cost 也是假議題，只會有一種 cost。
+
+{% highlight c++ linenos %}
+#include <bits/stdc++.h>
+using namespace std;
+#define REP(i,a,b) for (int i(a); i < (b); ++i)
+#define PER(i,a,b) for(int i((a)-1); i >= (b); --i)
+template<class T,class U>
+bool cmax(T & a, const U & b) {return a < b ? a = b, 1 : 0;}
+template<class T,class U>
+bool cmin(T & a, const U & b) {return b < a ? a = b, 1 : 0;}
+typedef long long ll;
+typedef pair<int,int> pii;
+typedef pair<ll,ll> pll;
+#define F first
+#define S second
+typedef vector<int> vi;
+typedef vector<ll> vll;
+#define SZ(a) ((int)(a).size())
+#define ALL(a) begin(a), end(a)
+#define PB push_back
+#define EB emplace_back
+class DeleteArrays {
+    vll go(vll & A,vll & B,vll & C,ll x,ll y,ll z)
+    {
+        int a=SZ(A),b=SZ(B),c=SZ(C);
+        ll su = 0;
+        ll co = 0;
+        while (b && c && b + c > a) {
+            co += B[--b] + C[--c] + y;
+        }
+        if (b + c > a)
+            return {LLONG_MAX,LLONG_MAX};
+        while (b) co += B[--b] + A[--a] + x;
+        while (c) co += C[--c] + A[--a] + z;
+        while (a) su += A[--a];
+        return {su, co};
+    }
+    public:
+    vector<long long> doDelete(int a, int b, int c, long long x, long long y, long long z) {
+        vll A(a),B(b),C(c);
+        A[0] = 33;
+        A[1] = 42;
+        for (int i = 2; i < a; ++i)
+            A[i] = (5*A[i-1] + 7*A[i-2]) % 1000000007 + 1;
+        B[0] = 13;
+        for (int i = 1; i < b; ++i)
+            B[i] = (11*B[i-1]) % 1000000007 + 1;
+        C[0] = 7;
+        C[1] = 2;
+        for (int i = 2; i < c; ++i)
+                C[i] = (5*C[i-1] + 7*C[i-2]) % 1000000007 + 1;
+        sort(ALL(A));
+        sort(ALL(B));
+        sort(ALL(C));
+        return min({
+            go(A,B,C,x,y,z),
+            go(B,C,A,y,z,x),
+            go(C,A,B,z,x,y)
+            });
+    }
+};
+{% endhighlight %}
+後面的 code 就不放模板了，佔空間。
+
+## [Medium: ShoppingSpree](https://community.topcoder.com/stat?c=problem_statement&pm=15702)  
+### 題意
+給一張有（正）點權沒邊權的二分圖，邊數為 \\(d\\)，可以選至多 \\(k\\) 條邊，
+求他們的 edge-induced subgraph 最大的點權和。
+
+### 解法
+最小費用流。
+建模看 code，應該很好懂。
+可以想像挑一條邊 \\( (u,v) \\) 是從 \\(u,v\\) 分別拿一個數字，
+第一次拿到點權，之後都是 0，
+因為點權都是正的，取負後作為流網路中邊的費用可以保證照上述的順序拿數字。
+
+{% highlight c++ linenos %}
+struct CostFlow {
+	static const int MXN = 205;
+	static const long long INF = 102938475610293847LL;
+	struct Edge {
+		int v, r;
+		long long f, c;
+	};
+	int n, s, t, prv[MXN], prvL[MXN], inq[MXN];
+	long long dis[MXN], fl, cost;
+	vector<Edge> E[MXN];
+	void init(int _n, int _s, int _t) {
+		n = _n; s = _s; t = _t;
+		for (int i=0; i<n; i++) E[i].clear();
+		fl = cost = 0;
+	}
+	void add_edge(int u, int v, long long f, long long c) {
+		E[u].PB({v, SZ(E[v])  , f,  c});
+		E[v].PB({u, SZ(E[u])-1, 0, -c});
+	}
+	pll flow() {
+        while (true) {
+            for (int i=0; i<n; i++) {
+                dis[i] = INF;
+                inq[i] = 0;
+            }
+            dis[s] = 0;
+			queue<int> que;
+			que.push(s);
+			while (!que.empty()) {
+				int u = que.front(); que.pop();
+				inq[u] = 0;
+				for (int i=0; i<SZ(E[u]); i++) {
+					int v = E[u][i].v;
+					long long w = E[u][i].c;
+					if (E[u][i].f > 0 && dis[v] > dis[u] + w) {
+						prv[v] = u; prvL[v] = i;
+						dis[v] = dis[u] + w;
+						if (!inq[v]) {
+							inq[v] = 1;
+							que.push(v);
+						}
+					}
+				}
+			}
+			if (dis[t] == INF) break;
+			long long tf = INF;
+			for (int v=t, u, l; v!=s; v=u) {
+				u=prv[v]; l=prvL[v];
+				tf = min(tf, E[u][l].f);
+			}
+			for (int v=t, u, l; v!=s; v=u) {
+				u=prv[v]; l=prvL[v];
+				E[u][l].f -= tf;
+				E[v][E[u][l].r].f += tf;
+			}
+			cost += tf * dis[t];
+			fl += tf;
+		}
+		return {fl, cost};
+	}
+}flow;
+class ShoppingSpree {
+    public:
+    int maxValue(int k, vector<int> a, vector<int> b, vector<int> x, vector<int> y) {
+        int n = a.size(), m = b.size(), d = x.size();
+        int s0 = n + m, s1 = n + m + 1, t = n + m + 2;
+        flow.init(n+m+3,s0,t);
+        flow.add_edge(s0,s1,k,0);
+        for (int i = 0; i < n; ++i) {
+            flow.add_edge(s1,i,1,-a[i]);
+            flow.add_edge(s1,i,k,0);
+        }
+        for (int i = 0; i < d; ++i)
+            flow.add_edge(x[i],n+y[i],1,0);
+        for (int i = 0; i < m; ++i) {
+            flow.add_edge(n+i,t,1,-b[i]);
+            flow.add_edge(n+i,t,k,0);
+        }
+        return flow.flow().S * -1;
+    }
+};
+{% endhighlight %}
+
+## [Hard: RandomSelection](https://community.topcoder.com/stat?c=problem_statement&pm=15687)
+### 題意
+給定一個長度 \\(n\\) 的非負整數序列 \\(A\\)，
+\\(a_i\\) 是從 \\( [0,A_i] \\) uniformly at random 選的一個實數，
+求 \\( E[\max_{i=1}^{n}(a_i)] \\)。
+
+### 解法
+簡單機率跟微積分。
+
+實數上期望值的定義是這樣的：
+
+\\[ E[X] = \int_{\mathbb{R}} x f(x) dx \\]
+
+\\( f(x) \\) 是機率密度函數 (Probability density function (PDF))。  
+\\( F(x) = Pr( X \le x ) \\) 是累積分布函數 (Cumulative Distribution Function(CDF))。  
+\\( f(x) = \frac{d F(x)}{dx} \\)。
+
+
+令 \\(X = \max_{i=1}^{n}(a_i)\\)。
+\\[ Pr( X \le x ) = \prod_{i=1}^{n}Pr(a_i \le x) = \prod_{i=1}^{n}\frac{ \min(x,A_i) }{A_i} \\]
+那我們先把 \\(A\\) 由大到小排序，尾巴加個 0，方便推式子。  
+可得出  
+$$
+\begin{align*}
+F(x) &= \frac{x^i}{\prod_{j=1}^{i} A_i }\text{ if }x \in [A_{i+1}, A_i] \\
+f(x) &= \frac{d F(x)}{dx} = \frac{i x^{i-1}}{\prod_{j=1}^{i} A_i }\text{ if }x \in [A_{i+1}, A_i]\\
+E[A_{i+1} \le X \le A_i] &= \int_{A_{i+1}}^{A_i} x f(x) dx = \frac{i x^{i+1}}{ (i+1) \prod_{j=1}^{i} A_i }
+\end{align*}
+$$
+
+剩下就是實做問題了。
+因為乘的數字很大，次方很高，總之會想先把所有東西取個 \\(\log\\)，乘除跟次方用加減乘取代，最後再 \\(\exp\\) 回來。
+我的 code （跟其他很多人的）用 double 精度不夠會 WA，改 long double 才過。
+
+
+
+{% highlight c++ linenos %}
+typedef long double val;
+class RandomSelection {
+    public:
+    double expectedMaximum(int n, int T, int seed, int Amod, vector<int> Aprefix) {
+        vll A(n+1);
+        for (int i = 1; i <= SZ(Aprefix); ++i)
+            A[i] = Aprefix[i-1];
+        ll state = seed;
+        for (int i = SZ(Aprefix) + 1; i <= n; ++i) {
+            state = (1103515245 * state + 12345) % (1ll<<31);
+            A[i] = T + (state % Amod);
+        }
+        sort(ALL(A),greater<ll>());
+        val ret = 0, C = 0;
+        for (int i = 1; i <= n; ++i) {
+            ll a = A[i], b = A[i-1];
+            C += log(b);
+            auto f = [&](val x) -> val {
+                if (x == 0)
+                    return 0;
+                return exp(((i+1) * log(x) + log(i)) - (C + log(i+1)));
+            };
+            ret += f(b) - f(a);
+        }
+        return ret;
+    }
+};
+{% endhighlight %}
+
+### 題外話
+這份 code 只有做排序跟 \\(O(N)\\) 次 \\(\log, \exp\\) 運算，最慢的測資也才跑 67 ms。
+[Petr 賽中](https://youtu.be/3oIrxt5Btvc?t=4160) 用 Java 寫完第三題，
+寫完隨手一測 2.591s（應該跟我解法不同複雜度，沒仔細看他 code），
+眉頭一皺發現不對勁，
+TL 是 2s，
+於是 Petr 靈機一動，
+把他的 Java code 貼到 sol.cpp 裡開始改寫成 C++。
+這輩子第一次看到 Petr 寫 C++，
+笑死🤣🤣🤣。
