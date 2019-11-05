@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: pr3-pony's magical wonderland
+title: pr3pony's magical wonderland
 email: 3254tg89@gmail.com
 description: pony is love, coding is life  # this means to ignore newlines until "baseurl:"
 baseurl: "/blog" # the subpath of your site, e.g. /blog
