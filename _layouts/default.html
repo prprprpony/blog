@@ -4,7 +4,7 @@
 {% include head.html %}
 	<body id= "top">
 		<header id="header">
-			<a href="#" class="image avatar"><img src={{ "/images/avatar.png" | prepend: site.baseurl }} alt="" /></a>
+			<a href="{{ site.url }}{{ site.baseurl }}/" class="image avatar"><img src={{ "/images/avatar.png" | prepend: site.baseurl }} alt="" /></a>
                         <h1><strong>{{ site.title }}</strong><br>
                             {{ site.description }}</h1>
 		</header>
